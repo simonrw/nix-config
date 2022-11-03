@@ -14,7 +14,7 @@
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, darwin, flake-utils, home-manager, ... }:
+  outputs = { nixpkgs, darwin, flake-utils, home-manager, nixgl, ... }:
     let
       mkNixOSConfiguration =
         name: nixpkgs.lib.nixosSystem {
@@ -50,6 +50,20 @@
                 if pkgs.stdenv.isDarwin then
                   (final.callPackage ./derivations/brave/default.nix { })
                 else prev.brave;
+            })
+            nixgl.overlay
+            (final: prev: {
+              alacritty = final.writeScriptBin "alacritty" ''
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                # Find the correct binary
+                bins=$(${final.coreutils}/bin/ls ${final.nixgl.auto.nixGLNvidia}/bin/*)
+                nvidiaProg=$(echo $bins | head -n 1)
+
+                $nvidiaProg ${prev.alacritty}/bin/alacritty
+              '';
             })
           ];
         in
