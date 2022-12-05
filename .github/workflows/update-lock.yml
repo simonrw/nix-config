@@ -32,6 +32,8 @@ jobs:
         run: nix build '.#homeConfigurations.x86_64-linux.simon.activationPackage' -o result
       - name: Compute the diff
         run: |
+          set -euo pipefail
+          set -x
           echo "# Package diff" > $GITHUB_STEP_SUMMARY
           echo "```" >> $GITHUB_STEP_SUMMARY
           nix store diff-closures ./result-old ./result >> $GITHUB_STEP_SUMMARY
