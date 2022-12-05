@@ -35,6 +35,6 @@ jobs:
           set -euo pipefail
           set -x
           echo "# Package diff" > $GITHUB_STEP_SUMMARY
-          echo "```" >> $GITHUB_STEP_SUMMARY
-          nix store diff-closures ./result-old ./result >> $GITHUB_STEP_SUMMARY
-          echo "```" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          # nix store diff-closures ./result-old ./result >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
