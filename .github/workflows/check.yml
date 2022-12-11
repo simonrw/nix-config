@@ -1,0 +1,32 @@
+name: check lockfile on updates
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test-lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install Nix
+        uses: cachix/install-nix-action@v16
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - uses: cachix/cachix-action@v11
+        with:
+          name: '${{ secrets.CACHIX_NAME }}'
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Build the previous configuration
+        run: nix build "github:simonrw/macos-nix-config#homeConfigurations.x86_64-linux.simon.activationPackage" -o result-old
+      - name: Build the new configuration
+        run: nix build '.#homeConfigurations.x86_64-linux.simon.activationPackage' -o result
+      - name: Compute the diff
+        run: |
+          set -euo pipefail
+          set -x
+
+          echo "# Package diff" > $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          nix store diff-closures ./result-old ./result >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
