@@ -12,8 +12,8 @@ case ${NIXARCH} in
         sudo nixos-rebuild switch --flake .
         ;;
     *-darwin)
-        nix --extra-experimental-features "nix-command flakes" build ".#darwinConfigurations.${NIXARCH}.${HOSTNAME}.system"
-        ./result/sw/bin/darwin-rebuild switch --flake ".#${NIXARCH}.${HOSTNAME}" "$@"
+        nix --extra-experimental-features "nix-command flakes" build ".#darwinConfigurations.${HOSTNAME}.system"
+        ./result/sw/bin/darwin-rebuild switch --flake ".#${HOSTNAME}" "$@"
         ;;
     *)
         echo "Unhandled architecture: ${NIXARCH}" >&2

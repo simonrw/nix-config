@@ -75,16 +75,17 @@
       ];
       mkNixOSConfiguration =
         let
+          system = "x86_64-linux";
+
           pkgs = import nixpkgs {
-            system = "x86_64-linux";
-            overlays = mkOverlays "x86_64-linux";
+            inherit system;
+            overlays = mkOverlays system;
             config.allowUnfree = true;
             config.input-fonts.acceptLicense = true;
           };
         in
         name: nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          system = "x86_64-linux";
+          inherit pkgs system;
           modules =
             [
               ./system/nixos/${name}/configuration.nix
@@ -112,6 +113,39 @@
           nixosConfigurations = builtins.foldl' appendNixOSConfiguration { } names;
         };
 
+      darwinConfigurations =
+        let
+          system = "aarch64-darwin";
+
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = mkOverlays system;
+            config.allowUnfree = true;
+            config.input-fonts.acceptLicense = true;
+          };
+        in
+        {
+          darwinConfigurations = {
+            mba = darwin.lib.darwinSystem {
+              inherit pkgs system;
+              modules = [
+                ./system/darwin/configuration.nix
+                home-manager.darwinModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.extraSpecialArgs = {
+                    isLinux = pkgs.stdenv.isLinux;
+                    isDarwin = pkgs.stdenv.isDarwin;
+                  };
+
+                  home-manager.users.simon = import ./home/home.nix;
+                }
+              ];
+            };
+          };
+        };
+
       # these definitions are per system
       perSystemConfigurations = flake-utils.lib.eachDefaultSystem (system:
         let
@@ -127,7 +161,7 @@
         {
           homeConfigurations = {
             simon = home-manager.lib.homeManagerConfiguration {
-              pkgs = pkgs;
+              inherit pkgs;
               modules = [
                 ./home/home.nix
               ];
@@ -140,7 +174,7 @@
             };
             work = home-manager.lib.homeManagerConfiguration
               {
-                pkgs = pkgs;
+                inherit pkgs;
                 modules = [
                   ./home/work.nix
                 ];
@@ -151,26 +185,6 @@
                   isDarwin = pkgs.stdenv.isDarwin;
                 };
               };
-          };
-          darwinConfigurations = {
-            mba = darwin.lib.darwinSystem {
-              system = "aarch64-darwin";
-              modules = [
-                ./system/darwin/configuration.nix
-                home-manager.nixosModules.home-manager
-                {
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.extraSpecialArgs = {
-                    isLinux = pkgs.stdenv.isLinux;
-                    isDarwin = pkgs.stdenv.isDarwin;
-                  };
-
-                  home-manager.users.simon = import ./home/home.nix;
-                }
-              ];
-              inputs = { inherit darwin pkgs; };
-            };
           };
           devShells.default = pkgs.mkShell
             {
@@ -186,5 +200,5 @@
       [
         "nixos"
         "astoria"
-      ] // perSystemConfigurations;
+      ] // darwinConfigurations // perSystemConfigurations;
 }
