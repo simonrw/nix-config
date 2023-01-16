@@ -157,6 +157,17 @@
               system = "aarch64-darwin";
               modules = [
                 ./system/darwin/configuration.nix
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.extraSpecialArgs = {
+                    isLinux = pkgs.stdenv.isLinux;
+                    isDarwin = pkgs.stdenv.isDarwin;
+                  };
+
+                  home-manager.users.simon = import ./home/home.nix;
+                }
               ];
               inputs = { inherit darwin pkgs; };
             };
