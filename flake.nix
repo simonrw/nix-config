@@ -114,36 +114,37 @@
         };
 
       darwinConfigurations =
-        let
-          system = "aarch64-darwin";
-
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = mkOverlays system;
-            config.allowUnfree = true;
-            config.input-fonts.acceptLicense = true;
-          };
-        in
         {
-          darwinConfigurations = {
-            mba = darwin.lib.darwinSystem {
-              inherit pkgs system;
-              modules = [
-                ./system/darwin/configuration.nix
-                home-manager.darwinModules.home-manager
-                {
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.extraSpecialArgs = {
-                    isLinux = pkgs.stdenv.isLinux;
-                    isDarwin = pkgs.stdenv.isDarwin;
-                  };
+          darwinConfigurations =
+            let
+              system = "aarch64-darwin";
 
-                  home-manager.users.simon = import ./home/home.nix;
-                }
-              ];
+              pkgs = import nixpkgs {
+                inherit system;
+                overlays = mkOverlays system;
+                config.allowUnfree = true;
+                config.input-fonts.acceptLicense = true;
+              };
+            in
+            {
+              mba = darwin.lib.darwinSystem {
+                inherit pkgs system;
+                modules = [
+                  ./system/darwin/configuration.nix
+                  home-manager.darwinModules.home-manager
+                  {
+                    home-manager.useGlobalPkgs = true;
+                    home-manager.useUserPackages = true;
+                    home-manager.extraSpecialArgs = {
+                      isLinux = pkgs.stdenv.isLinux;
+                      isDarwin = pkgs.stdenv.isDarwin;
+                    };
+
+                    home-manager.users.simon = import ./home/home.nix;
+                  }
+                ];
+              };
             };
-          };
         };
 
       # these definitions are per system
