@@ -32,8 +32,8 @@ in
     ./chromium.nix
     # ./kde.nix
     # ./xfce.nix
-    ./gnome.nix
-    # ./i3.nix
+    # ./gnome.nix
+    ./i3.nix
   ];
 
   home = {
