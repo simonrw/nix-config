@@ -33,6 +33,7 @@ in
     # ./xfce.nix
     # ./gnome.nix
     # ./i3.nix
+    ./bspwm.nix
   ];
 
   home = {
