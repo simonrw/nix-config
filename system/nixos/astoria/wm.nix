@@ -1,5 +1,23 @@
 { pkgs, ... }:
 let
+  bspwm-settings = {
+    services.xserver = {
+      enable = true;
+      desktopManager.xterm.enable = false;
+      displayManager = {
+        defaultSession = "none+bspwm";
+        lightdm = {
+          enable = true;
+          greeter.enable = true;
+        };
+      };
+
+      windowManager.bspwm = {
+        enable = true;
+      };
+    };
+  };
+
   i3-settings = {
     environment.pathsToLink = [ "/libexec" ];
 
@@ -75,4 +93,4 @@ let
     programs.dconf.enable = true;
   };
 in
-gnome-settings
+bspwm-settings
