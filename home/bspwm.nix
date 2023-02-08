@@ -5,15 +5,56 @@
       enable = true;
       settings = {
         border_width = 0;
-        window_gap = 0;
+        window_gap = 8;
         top_padding = 20;
-        split_ratio = 0.55;
+        split_ratio = 0.52;
         borderless_monocle = true;
         gapless_monocle = true;
         normal_border_color = "#2E3440";
         active_border_color = "#D8DEE9";
         focused_border_color = "#D8DEE9";
         presel_feedback_color = "#2E3440";
+      };
+      alwaysResetDesktops = true;
+      monitors = {
+        # TODO: this should be changed if adopting bspwm
+        "Virtual-1" = [
+          "I"
+          "II"
+          "III"
+          "IV"
+          "V"
+        ];
+      };
+      startupPrograms = [
+        "polybar"
+      ];
+    };
+
+    services.picom = {
+      enable = true;
+      # broken in vm
+      # backend = "glx";
+      fade = true;
+      fadeDelta = 5;
+      fadeSteps = [
+        0.03
+        0.03
+      ];
+      inactiveOpacity = 0.6;
+      shadow = true;
+      shadowOffsets = [
+        (-7)
+        (-7)
+      ];
+      shadowOpacity = 0.8;
+      shadowExclude = [
+        ''window_type *= "menu"''
+        ''name *?= "polybar"''
+      ];
+      vSync = true;
+      settings = {
+        shadow-radius = 10;
       };
     };
 
