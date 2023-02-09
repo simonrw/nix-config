@@ -40,13 +40,13 @@
     services.picom = {
       enable = true;
       backend = "glx";
-      fade = true;
+      fade = false;
       fadeDelta = 5;
       fadeSteps = [
         0.03
         0.03
       ];
-      inactiveOpacity = 0.6;
+      inactiveOpacity = 0.95;
       shadow = true;
       shadowOffsets = [
         (-7)
