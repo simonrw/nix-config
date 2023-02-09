@@ -17,13 +17,19 @@
       };
       alwaysResetDesktops = true;
       monitors = {
-        # TODO: this should be changed if adopting bspwm
-        "Virtual-1" = [
+        "DP-0" = [
           "I"
           "II"
           "III"
           "IV"
           "V"
+        ];
+        "DP-2" = [
+          "VI"
+          "VII"
+          "VIII"
+          "IX"
+          "X"
         ];
       };
       startupPrograms = [
@@ -33,8 +39,7 @@
 
     services.picom = {
       enable = true;
-      # broken in vm
-      # backend = "glx";
+      backend = "glx";
       fade = true;
       fadeDelta = 5;
       fadeSteps = [
