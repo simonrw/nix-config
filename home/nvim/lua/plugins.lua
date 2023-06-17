@@ -33,6 +33,15 @@ require('packer').startup({ function(use)
     }
 
     use {
+        "nvim-neotest/neotest",
+        requires = {
+            "antoinemadec/FixCursorHold.nvim"
+        }
+    }
+    use "nvim-neotest/neotest-python"
+    use "nvim-neotest/neotest-vim-test"
+
+    use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
             -- LSP Support
