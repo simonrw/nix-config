@@ -13,6 +13,7 @@
       ./logitech.nix
       ./wm.nix
       ./networking.nix
+      ./1password.nix
     ];
 
   # Bootloader.
