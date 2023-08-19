@@ -57,29 +57,8 @@ let
     ;; (set-face-attribute 'variable-pitch nil :family "Cantarell" :height 120)
     (set-face-attribute 'default (selected-frame) :height 120)
 
-    ;; Configure company
-    (add-hook 'after-init-hook 'global-company-mode)
-    (setq company-minimum-prefix-length 1
-          company-idle-delay 0.0)
-
-    ;; Enable eglot
-    (add-hook 'python-mode-hook 'eglot-ensure)
-    (add-hook 'rust-mode-hook 'eglot-ensure)
-
     ;; use direnv
     (direnv-mode)
-
-    ;; Blacken
-    (add-hook 'python-mode-hook 'blacken-mode)
-
-    ;; of course vim
-    (evil-mode)
-
-    ;; better rust
-    (setq rustic-lsp-client 'eglot)
-
-    ;; theming
-    (load-theme '${theme})
   '';
 in
 {
