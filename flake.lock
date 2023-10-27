@@ -137,11 +137,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1698278553,
-        "narHash": "sha256-xcNbKiTamYGIQtFwmBRBrgoBmCRI6lZXvj+o3/7FauA=",
+        "lastModified": 1698364960,
+        "narHash": "sha256-L99PhaB3hlPiUaQNeoM7Y9A2vKld3cMHkaASVhMhIrQ=",
         "owner": "genericnerdyusername",
         "repo": "jetbrains-updater",
-        "rev": "d594fede08115b0012269dc74f5966bd2841ad5b",
+        "rev": "f62ba5e97671c5ca5aefec02879166463d0b8282",
         "type": "gitlab"
       },
       "original": {
