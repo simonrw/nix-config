@@ -15,6 +15,7 @@ in
         "Inconsolata"
         "MesloLGS NF"
         "Comic Mono"
+        "Monaspace"
       ];
       description = ''
         Which font to use
@@ -45,7 +46,9 @@ in
         "Inconsolata" = "Inconsolata";
       }.${cfg.font-name} or null;
       # TODO: hard-code comic mono here
-      font-package = if nerdfont-name != null then (pkgs.nerdfonts.override { fonts = [ nerdfont-name ]; }) else pkgs.comic-mono;
+      font-package = if nerdfont-name != null then (pkgs.nerdfonts.override { fonts = [ nerdfont-name ]; }) else {
+        "Monaspace" = pkgs.monaspace;
+      }.${cfg.font-name};
 
       alacritty-font-renamed = {
         "IBM Plex" = "IBM Plex Mono";
