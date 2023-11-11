@@ -54,6 +54,7 @@ in
         "IBM Plex" = "IBM Plex Mono";
         "Inconsolata" = "Inconsolata Nerd Font Mono";
         "JetBrains Mono" = "JetBrainsMono Nerd Font Mono";
+        "Monaspace" = "Monaspace Neon Var";
       }.${cfg.font-name} or cfg.font-name;
 
       kitty-font = {
