@@ -112,7 +112,6 @@ in
     lorien
     obs-studio
     jetbrains.pycharm-community
-    telegram-desktop
     shotcut
     wally
     wally-cli
