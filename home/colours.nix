@@ -831,14 +831,14 @@ with lib;
     # home.file.".config/nvim/after/colors/theme.vim".text = ''
     #   hi TreesitterContext guibg=${current-theme.normal.white}
     # '';
-    programs.neovim.plugins = with pkgs.vimPlugins; {
-      gruvbox = [
-        gruvbox
-      ];
-      catppuccin-frappe = [
-        catppuccin-nvim
-      ];
-    }.${config.me.theme} or [ ];
+    # programs.neovim.plugins = with pkgs.vimPlugins; {
+    #   gruvbox = [
+    #     gruvbox
+    #   ];
+    #   catppuccin-frappe = [
+    #     catppuccin-nvim
+    #   ];
+    # }.${config.me.theme} or [ ];
     programs.tmux.extraConfig = ''
       fg_colour="${tmux-primary-colour}"
       bg_colour="${tmux-background-colour}"

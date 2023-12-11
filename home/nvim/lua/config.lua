@@ -4,15 +4,11 @@ require('plugins')
 require('mappings')
 require('lualineconfig')
 
-if vim.g.include_treesitter == 1 then
-    require('treesitterconfig')
-end
-
-require('gutentags')
-require('hardtime')
+-- require('gutentags')
+-- require('hardtime')
 
 -- plugins
-require('fzf')
+-- require('fzf')
 require('vim-test')
 require('vtr')
 require('fugitive')
@@ -22,6 +18,6 @@ require('editorconfigconfig')
 require('aerialconfig')
 
 -- debugging
-require('dapconfig')
+-- require('dapconfig')
 
 require('gitsignsconfig')
