@@ -12,6 +12,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local opts = {
+    performance = {
+        -- allow nix packages
+        reset_packpath = false,
+    },
+}
+
 require("lazy").setup({
         'christoomey/vim-tmux-runner',
         'christoomey/vim-conflicted',
@@ -79,39 +86,7 @@ require("lazy").setup({
         },
 
         'lewis6991/gitsigns.nvim',
-        { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate", config = function()
-            local ts = require('nvim-treesitter.configs')
 
-            ts.setup {
-                highlight = {
-                    enable = true,
-                    use_languagetree = true,
-                    disable = {
-                        "gitcommit",
-                    },
-                },
-                indent = {
-                    enable = false,
-                },
-                ensure_installed = "all",
-                textobjects = {
-                    select = {
-                        enable = true,
-                        lookahead = true,
-                        keymaps = {
-                            ["af"] = "@function.outer",
-                            ["if"] = "@function.inner",
-                            ["ac"] = "@class.outer",
-                            ["ic"] = "@class.inner",
-                        },
-                        include_surrounding_whitespace = function(query_string, selection_mode)
-                            return query_string == "@function.outer" or query_string == "@class.outer"
-                        end,
-                    },
-                },
-            }
-        end,
-        },
         {
             'nvim-treesitter/nvim-treesitter-context',
             config = function()
@@ -159,5 +134,5 @@ require("lazy").setup({
         --         { 'L3MON4D3/LuaSnip' },
         --     }
         -- }
-})
+}, opts)
 
