@@ -15,7 +15,9 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
     performance = {
         -- allow nix packages
-        reset_packpath = false,
+        rtp = {
+            reset = false,
+        },
     },
 }
 
