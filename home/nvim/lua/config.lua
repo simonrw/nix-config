@@ -4,6 +4,8 @@ require('plugins')
 require('mappings')
 require('lualineconfig')
 
+require('treesitterconfig')
+
 -- require('gutentags')
 -- require('hardtime')
 
