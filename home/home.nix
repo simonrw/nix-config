@@ -83,6 +83,7 @@ in
       enable = system != "aarch64-linux";
       dark-mode = true;
     };
+    wm.hyprland.enable = system != "aarch64-linux";
   } else { });
 
   home.file = {
