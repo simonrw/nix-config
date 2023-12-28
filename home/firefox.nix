@@ -18,6 +18,12 @@
         ];
         extraConfig = builtins.readFile ./firefox-preferences.js;
         isDefault = true;
+        settings = {
+          "browser.search.region" = "GB";
+          "browser.search.isUS" = false;
+          "distribution.searchplugins.defaultLocale" = "en-GB";
+          "general.useragent.locale" = "en-GB";
+        };
       };
     };
   };
