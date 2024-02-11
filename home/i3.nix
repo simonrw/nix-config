@@ -22,10 +22,11 @@
 
   browser-command =
     {
+      # fallback for linux vm on my mba
       "aarch64-linux" = "exec firefox";
     }
     .${system}
-    or "exec google-chrome-stable";
+    or "exec ${config.me.defaults.browser}";
 in {
   config = {
     xsession.windowManager.i3 = {
@@ -170,6 +171,10 @@ in {
             "Return" = "mode default";
             "Escape" = "mode default";
           };
+        };
+        gaps = {
+          inner = 4;
+          outer = 4;
         };
       };
     };
