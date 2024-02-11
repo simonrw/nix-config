@@ -102,9 +102,6 @@ in {
           # toggle sticky windows
           "${mod}+Shift+s" = "sticky toggle";
 
-          # change focus between tiling / floating windows
-          "${mod}+space" = "focus mode_toggle";
-
           # focus the parent container
           "${mod}+a" = "focus parent";
           # switch to workspace
@@ -146,6 +143,7 @@ in {
           "${mod}+c" = browser-command;
           "${mod}+Return" = "exec alacritty";
           "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
+          "${mod}+space" = "exec ${pkgs.rofi}/bin/rofi -show drun";
 
           # handle my moonlander keybindings
           "Mod1+Mod4+t" = "exec alacritty";
