@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
@@ -11,6 +12,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.river.enable = true;
+    programs.river = {
+      enable = true;
+
+      extraPackages = with pkgs; [
+        rofi
+        swaylock
+        foot
+      ];
+    };
   };
 }
