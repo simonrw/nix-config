@@ -64,6 +64,7 @@ in {
       ./xcape.nix
       ./bspwm.nix
       ./hyprland.nix
+      ./river.nix
     ]
     ++ lib.optionals isDarwin [
     ];
@@ -113,6 +114,7 @@ in {
           animation-speed = "default";
           wayland = true;
         };
+        wm.river.enable = true;
       }
       else {}
     );

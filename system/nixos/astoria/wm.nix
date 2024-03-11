@@ -9,6 +9,7 @@
     ./wm/bspwm.nix
     ./wm/pantheon.nix
     ./wm/hyprland.nix
+    ./wm/river.nix
   ];
 
   # enable the window managers I use
@@ -18,6 +19,7 @@
     enable = true;
     wayland = true;
   };
+  me.wm.river.enable = true;
 
   # overrides
   services.xserver.displayManager = {
