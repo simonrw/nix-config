@@ -13,6 +13,9 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.river = {
       enable = true;
+      settings = {
+        keyboard-layout = "gb";
+      };
     };
   };
 }
