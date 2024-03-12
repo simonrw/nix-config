@@ -19,7 +19,6 @@
     enable = true;
     wayland = true;
   };
-  me.wm.river.enable = true;
 
   # overrides
   services.xserver.displayManager = {

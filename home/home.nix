@@ -114,7 +114,6 @@ in {
           animation-speed = "default";
           wayland = true;
         };
-        wm.river.enable = true;
       }
       else {}
     );
