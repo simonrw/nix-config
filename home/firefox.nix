@@ -1,8 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  isDarwin,
+  ...
+}: {
   programs.firefox = {
     enable = true;
-    # don't install firefox
-    package = null;
+    package =
+      if isDarwin
+      then null
+      else pkgs.firefox;
     profiles = {
       simon = {
         name = "simon";
