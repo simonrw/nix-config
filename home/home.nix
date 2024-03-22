@@ -171,7 +171,7 @@ in {
 
   services.gpg-agent = lib.mkIf isLinux {
     enable = true;
-    pinentryPackage = pkgs.pinentry-gnome;
+    pinentryPackage = pkgs.pinentry-gnome3;
     enableFishIntegration = true;
     enableBashIntegration = true;
   };
