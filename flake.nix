@@ -4,6 +4,7 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-staging-next.url = "github:nixos/nixpkgs/staging-next";
     nixvim = {
       url = "github:nix-community/nixvim";
     };
@@ -65,6 +66,7 @@
         gh-rebase-pr = final.callPackage ./derivations/gh-rebase-pr {};
         notion = final.callPackage ./derivations/notion {};
         wlman = final.callPackage ./derivations/wlman {};
+        xz = inputs.nixpkgs-staging-next.legacyPackages.${system}.xz;
       })
       # override the version of xattr for poetry
       (
@@ -107,7 +109,7 @@
       nixpkgs.lib.nixosSystem {
         inherit pkgs system;
         specialArgs = {
-          inherit inputs;
+          inherit system inputs;
         };
         modules = [
           self.modules.nix
