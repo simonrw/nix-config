@@ -66,7 +66,6 @@
         gh-rebase-pr = final.callPackage ./derivations/gh-rebase-pr {};
         notion = final.callPackage ./derivations/notion {};
         wlman = final.callPackage ./derivations/wlman {};
-        xz = inputs.nixpkgs-staging-next.legacyPackages.${system}.xz;
       })
       # override the version of xattr for poetry
       (

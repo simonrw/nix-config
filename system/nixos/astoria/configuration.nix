@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   pkgs,
+  inputs,
   lib,
+  system,
   ...
 }: let
   default-locale = "en_GB.UTF-8";
@@ -23,6 +25,14 @@ in {
   ];
 
   config = {
+    # prevent xz cve
+    system.replaceRuntimeDependencies = [
+      {
+        original = pkgs.xz;
+        replacement = inputs.nixpkgs-staging-next.legacyPackages.${system}.xz;
+      }
+    ];
+
     # Bootloader.
     boot.loader.systemd-boot = {
       enable = true;
