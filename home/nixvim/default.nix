@@ -23,6 +23,17 @@
       hash = "sha256-ZRYclqsgAvlRBwb59XHlqVat7CxUJTH1rD6QLwh1ang=";
     };
   };
+
+  vim-lucius = pkgs.vimUtils.buildVimPlugin {
+    pname = "vim-lucius";
+    version = "1.0.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "jonathanfilip";
+      repo = "vim-lucius";
+      rev = "b5dea9864ae64714da4635993ad2fc2703e7c832";
+      hash = "sha256-FlSqTEQyYm17vR7sNw5hlq2Hpz1cWYr23ARsVNibUBM=";
+    };
+  };
 in {
   imports = [
     ./dap.nix
@@ -335,6 +346,7 @@ in {
       lsp-status-nvim
       vim-test
       nvim-nio
+      vim-lucius
     ];
     extraConfigLua = ''
     '';
