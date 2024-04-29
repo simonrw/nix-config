@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   keymap = {
     key,
     action,
@@ -28,10 +32,10 @@
     pname = "vim-lucius";
     version = "1.0.0";
     src = pkgs.fetchFromGitHub {
-      owner = "jonathanfilip";
+      owner = "simonrw";
       repo = "vim-lucius";
-      rev = "b5dea9864ae64714da4635993ad2fc2703e7c832";
-      hash = "sha256-FlSqTEQyYm17vR7sNw5hlq2Hpz1cWYr23ARsVNibUBM=";
+      rev = "1428b33b63e6869966a22491f892ce3e9d05832e";
+      hash = "sha256-QfnkvRkAOnLRCoKMkQkfRE2F/B/Dhqi8PyCRBl92vww=";
     };
   };
 in {
