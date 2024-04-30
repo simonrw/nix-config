@@ -27,17 +27,6 @@
       hash = "sha256-ZRYclqsgAvlRBwb59XHlqVat7CxUJTH1rD6QLwh1ang=";
     };
   };
-
-  vim-lucius = pkgs.vimUtils.buildVimPlugin {
-    pname = "vim-lucius";
-    version = "1.0.0";
-    src = pkgs.fetchFromGitHub {
-      owner = "simonrw";
-      repo = "vim-lucius";
-      rev = "1428b33b63e6869966a22491f892ce3e9d05832e";
-      hash = "sha256-QfnkvRkAOnLRCoKMkQkfRE2F/B/Dhqi8PyCRBl92vww=";
-    };
-  };
 in {
   imports = [
     ./dap.nix
@@ -350,10 +339,12 @@ in {
       lsp-status-nvim
       vim-test
       nvim-nio
-      vim-lucius
     ];
     extraConfigLua = ''
     '';
+    extraFiles = {
+      "colors/lucius.vim" = builtins.readFile ./colors/lucius.vim;
+    };
     extraConfigVim = ''
       " Add mapping to open/close the quickfix list
       " Taken from: http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
