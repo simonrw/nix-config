@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   keymap = {
     key,
     action,
@@ -42,10 +38,6 @@ in {
   config.programs.nixvim = {
     enable = true;
     editorconfig.enable = false;
-    colorschemes.nord = {
-      enable = true;
-      settings.uniform_diff_background = true;
-    };
     options = {
       autowrite = true;
       backspace = ["indent" "eol" "start"];
@@ -344,6 +336,7 @@ in {
     '';
     extraFiles = {
       "colors/lucius.vim" = builtins.readFile ./colors/lucius.vim;
+      "colors/srw256.vim" = builtins.readFile ./colors/srw256.vim;
     };
     extraConfigVim = ''
       " Add mapping to open/close the quickfix list

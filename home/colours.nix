@@ -747,8 +747,7 @@
     srw = ''
       vim.cmd([[
         set background=dark
-        colorscheme lucius
-        LuciusBlack
+        colorscheme srw256
         hi Normal guibg=none
         let g:linenr_background = 'none'
         execute 'highlight TelescopeNormal guibg=' . g:linenr_background
