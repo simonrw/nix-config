@@ -288,6 +288,17 @@
               python310Packages.black
             ];
           };
+
+          packages.nixvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule { 
+            inherit pkgs;
+            module = {
+              imports = [
+                ./home/nixvim/default.nix
+              ];
+            };
+            extraSpecialArgs = {
+            };
+          };
       }
     );
 
