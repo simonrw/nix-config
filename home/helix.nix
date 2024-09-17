@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   ...
 }: {
@@ -8,6 +6,9 @@
     enable = true;
     settings = {
       editor = {
+        auto-completion = true;
+        # instant completion
+        completion-timeout = 5;
         auto-pairs = false;
         true-color = true;
         line-number = "relative";
@@ -38,11 +39,18 @@
       };
     };
     languages = {
-      language-server.pyright = {
-        command = "${pkgs.pyright}/bin/pyright-langserver";
-        args = [
-          "--stdio"
-        ];
+      language-server = {
+        pyright = {
+          command = "${pkgs.pyright}/bin/pyright-langserver";
+          args = [
+            "--stdio"
+          ];
+        };
+        typescript-language-server = {
+          command = "${pkgs.typescript-language-server}/bin/typescript-language-server";
+          args = ["--stdio"];
+          config.hostInfo = "helix";
+        };
       };
       # language-server.rnix = {
       #   command = "${lib.getExe pkgs.rnix-lsp}";
