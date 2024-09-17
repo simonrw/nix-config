@@ -105,3 +105,15 @@ jobs:
           name: mindriot101-home
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - run: nix build '.#homeConfigurations.x86_64-darwin.simon.activationPackage'
+
+  macos-system:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - uses: cachix/cachix-action@v14
+        with:
+          name: mindriot101-home
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - run: NIX=nix bash ./bin/build.sh
