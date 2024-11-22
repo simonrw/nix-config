@@ -20,6 +20,8 @@ on:
       - .pre-commit-config.yaml
       - README.md
       - LICENSE
+env:
+  MACOSX_SDK_VERSION: "10.13"
 jobs:
   linux:
     runs-on: ubuntu-latest
