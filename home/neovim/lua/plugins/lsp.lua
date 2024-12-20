@@ -16,6 +16,7 @@ return {
         },
         config = function()
             require("lspconfig").lua_ls.setup {}
+            require("lspconfig").ts_ls.setup {}
             local __binds = {
                 {
                     action = vim.lsp.buf.type_definition,
