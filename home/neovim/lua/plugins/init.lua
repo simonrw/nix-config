@@ -79,7 +79,7 @@ return {
                     mode = "n"
                 }
             }
-            for i, map in ipairs(__nixvim_binds) do
+            for i, map in ipairs(__binds) do
                 vim.keymap.set(map.mode, map.key, map.action, map.options)
             end
         end
