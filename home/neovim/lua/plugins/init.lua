@@ -3,7 +3,13 @@ return {
         "catppuccin/nvim",
         name = "catppuccin",
         priority = 1000,
-        config = function() vim.cmd([[colorscheme catppuccin-macchiato]]) end
+        config = function()
+            vim.cmd([[
+                set background=dark
+                colorscheme catppuccin-macchiato
+            ]])
+            vim.cmd.highlight({"TreesitterContextBottom", "gui=none"})
+        end
     }, {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.8',

@@ -1,13 +1,13 @@
 local nixvim_options = {
     autowrite = true,
     background = "dark",
-    backspace = { "indent", "eol", "start" },
+    backspace = {"indent", "eol", "start"},
     backup = false,
     backupcopy = "auto",
-    backupdir = { "~/.vim/backup" },
+    backupdir = {"~/.vim/backup"},
     breakindent = true,
-    complete = { ".", "w", "b", "u", "t", "i" },
-    completeopt = { "menuone", "preview" },
+    complete = {".", "w", "b", "u", "t", "i"},
+    completeopt = {"menuone", "preview"},
     conceallevel = 0,
     cursorline = false,
     expandtab = true,
@@ -40,23 +40,21 @@ local nixvim_options = {
     splitbelow = true,
     splitright = true,
     swapfile = true,
-    switchbuf = { "useopen", "uselast" },
+    switchbuf = {"useopen", "uselast"},
     synmaxcol = 1024,
     tabstop = 4,
-    tags = { ".git/tags" },
+    tags = {".git/tags"},
     termguicolors = true,
     textwidth = 0,
     timeoutlen = 500,
     ttimeoutlen = 10,
     undofile = true,
     updatetime = 4000,
-    wildmode = { "list:longest", "list:full" },
+    wildmode = {"list:longest", "list:full"},
     winwidth = 80,
     wrap = false,
-    writebackup = false,
+    writebackup = false
 }
 
-for k, v in pairs(nixvim_options) do
-    vim.opt[k] = v
-end
+for k, v in pairs(nixvim_options) do vim.opt[k] = v end
 
