@@ -67,6 +67,8 @@ return {
             for _, map in ipairs(__binds) do
                 vim.keymap.set(map.mode, map.key, map.action, map.options)
             end
+
+            vim.lsp.inlay_hint.enable()
         end
     }
 }
