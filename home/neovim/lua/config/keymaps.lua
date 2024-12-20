@@ -5,7 +5,6 @@ do
         -- { action = ":update|:TestNearest<cr>", key = "tn", mode = "n", options = { noremap = true, silent = true } },
         -- { action = ":update|:TestSuite<cr>", key = "ta", mode = "n", options = { noremap = true, silent = true } },
         -- { action = ":update|:TestSuite<cr>", key = "ts", mode = "n", options = { noremap = true, silent = true } },
-        -- { action = "<Cmd>Oil<CR>", key = "-", mode = "n", options = { noremap = true, silent = true } },
         { action = ":Git commit -v<cr>", key = "<leader>gc", mode = "n", options = { noremap = true, silent = true } },
         { action = ":Gvdiff<cr>", key = "<leader>gd", mode = "n", options = { noremap = true, silent = true } },
         { action = ":Gwrite<cr>", key = "<leader>gw", mode = "n", options = { noremap = true, silent = true } },
