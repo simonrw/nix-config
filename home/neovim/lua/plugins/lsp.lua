@@ -63,7 +63,8 @@ return {
                     },
                     name = "pyright"
                 }, {name = "nil_ls"}, {name = "gopls"}, {name = "gleam"},
-                {name = "elmls"}
+                {name = "elmls"},
+                {name = "lua_ls"},
             }
 
             local capabilities = function()
