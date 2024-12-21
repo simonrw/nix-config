@@ -15,9 +15,91 @@ return {
             }
         },
         config = function()
-            require("lspconfig").lua_ls.setup {}
-            require("lspconfig").ts_ls.setup {}
-            require("lspconfig").rust_analyzer.setup {}
+            local lspServers = {
+                {
+                    extraOptions = {
+                        filetypes = {
+                            "javascript", "javascriptreact", "javascript.jsx",
+                            "typescript", "typescriptreact", "typescript.tsx"
+                        },
+                        settings = {
+                            javascript = {format = {indentSize = 2}},
+                            typescript = {format = {indentSize = 2}}
+                        }
+                    },
+                    name = "ts_ls"
+                }, {
+                    extraOptions = {
+                        settings = {
+                            ["rust-analyzer"] = {
+                                cachePriming = {enable = true, numThreads = 0},
+                                check = {allTargets = true, command = "clippy"}
+                            }
+                        }
+                    },
+                    name = "rust_analyzer"
+                }, {
+                    extraOptions = {
+                        on_attach = function(client, bufnr)
+                            client.config.settings.useLibraryCodeForTypes =
+                                false
+                            client.config.settings.autoSearchPaths = false
+                            client.config.settings
+                                .reportTypedDictNotRequiredAccess = "warning"
+                            client.config.settings.reportGeneralTypeIssues =
+                                "warning"
+                            client.config.settings.reportUnusedCallResult =
+                                false
+                            client.config.settings.reportAny = false
+                            client.config.settings.reportOptionalMemberAccess =
+                                false
+                            client.config.settings.reportUnknownMemberType =
+                                false
+                            client.config.settings.reportUnknownArgumentType =
+                                false
+                            client.config.settings.reportUnknownVariableType =
+                                fals
+                        end
+                    },
+                    name = "pyright"
+                }, {name = "nil_ls"}, {name = "gopls"}, {name = "gleam"},
+                {name = "elmls"}
+            }
+
+            local capabilities = function()
+                capabilities = vim.lsp.protocol.make_client_capabilities()
+
+                -- TODO
+                -- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+                return capabilities
+            end
+
+            local setup = {
+                on_attach = function(client, bufnr) end,
+                capabilities = capabilities()
+            }
+
+            for _, server in ipairs(lspServers) do
+                if type(server) == "string" then
+                    require("lspconfig")[server].setup(setup)
+                else
+                    local options = server.extraOptions
+
+                    if options == nil then
+                        options = setup
+                    else
+                        options = vim.tbl_extend("keep", options, setup)
+                    end
+
+                    require("lspconfig")[server.name].setup(options)
+                end
+            end
+
+            -- require("lspconfig").lua_ls.setup {}
+            -- require("lspconfig").ts_ls.setup {}
+            -- require("lspconfig").rust_analyzer.setup {}
+            --
             local __binds = {
                 {
                     action = vim.lsp.buf.type_definition,
