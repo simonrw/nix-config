@@ -62,7 +62,9 @@ return {
                         end
                     },
                     name = "pyright"
-                }, {name = "nil_ls"}, {name = "gopls"}, {name = "gleam"},
+                }, 
+                {name = "gopls"},
+                {name = "gleam"},
                 {name = "elmls"},
                 {name = "lua_ls"},
             }
