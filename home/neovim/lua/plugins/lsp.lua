@@ -12,7 +12,8 @@ return {
                         {path = "${3rd}/luv/library", words = {"vim%.uv"}}
                     }
                 }
-            }
+            },
+            "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
             local lspServers = {
@@ -70,11 +71,8 @@ return {
             }
 
             local capabilities = function()
-                capabilities = vim.lsp.protocol.make_client_capabilities()
-
-                -- TODO
-                -- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
+                local capabilities = vim.lsp.protocol.make_client_capabilities()
+                capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
                 return capabilities
             end
 
