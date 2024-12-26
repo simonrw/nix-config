@@ -61,5 +61,6 @@ return {
                 })
             end
         end
-    }
+    },
+    "tpope/vim-rhubarb",
 }
