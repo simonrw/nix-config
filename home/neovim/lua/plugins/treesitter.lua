@@ -9,7 +9,7 @@ return {
                 ensure_installed = {"lua", "vim", "rust", "python", "nix", "yaml"},
                 sync_install = false,
                 highlight = {enable = true},
-                indent = {enable = false}
+                indent = {enable = true}
             })
         end
     },
