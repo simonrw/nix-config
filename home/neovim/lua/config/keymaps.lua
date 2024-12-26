@@ -31,7 +31,7 @@ do
             mode = "n",
             options = {noremap = true, silent = true}
         }, {
-            action = ":call ToggleList('Quickfix List', 'c')<cr>",
+            action = ":ToggleList<cr>",
             key = "Q",
             mode = "n",
             options = {noremap = true, silent = true}
