@@ -54,6 +54,6 @@ in {
       max-free = ${toString (2 * 1024 * 1024 * 1024)}    # 2 GiB
     ''
     + pkgs.lib.optionalString (pkgs.system == "aarch64-darwin") ''
-      extra-platforms = x86_64-darwin
+      extra-platforms = x86_64-darwin x86_64-linux
     '';
 }

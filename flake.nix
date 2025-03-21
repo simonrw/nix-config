@@ -197,8 +197,11 @@
         "${name}" = mkNixOSConfiguration system name;
       };
 
-    nixOsConfigurations = systemDefinitions: {
-      nixosConfigurations = builtins.foldl' appendNixOSConfiguration {} systemDefinitions;
+    nixOsConfigurations = {
+      systemDefinitions,
+      extraDefinitions ? {},
+    }: {
+      nixosConfigurations = (builtins.foldl' appendNixOSConfiguration {} systemDefinitions) // extraDefinitions;
     };
 
     darwinConfigurations = {
@@ -302,13 +305,30 @@
       darwin = {name ? throw "No module name provided"}: import ./system/darwin/${name}/configuration.nix;
     };
   in
-    nixOsConfigurations
-    [
-      {
-        name = "astoria";
-        system = "x86_64-linux";
-      }
-    ]
+    nixOsConfigurations {
+      systemDefinitions = [
+        {
+          name = "astoria";
+          system = "x86_64-linux";
+        }
+      ];
+      extraDefinitions = {
+        iso = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+
+          modules = [
+            ({
+              pkgs,
+              modulesPath,
+              ...
+            }: {
+              imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
+              environment.systemPackages = [pkgs.neovim];
+            })
+          ];
+        };
+      };
+    }
     // darwinConfigurations
     // perSystemConfigurations
     // modules;
