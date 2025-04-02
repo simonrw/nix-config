@@ -35,5 +35,6 @@ in
     ];
     buildInputs = all-packages;
 
-    cargoHash = "sha256-hoZXR+zYuK/r4/r3QwIhTmMTCs5M0lMACH4QPEq07ZU=";
+    cargoHash = "sha256-/QNKrHwtSc/rOM0TljtgTGa/6/CB09mA4b4W84OXcAU=";
+    useFetchCargoVendor = true;
   }

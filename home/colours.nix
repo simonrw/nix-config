@@ -1168,7 +1168,7 @@ in
         color15 = current-theme.bright.white;
       };
 
-      programs.vscode.userSettings = {
+      programs.vscode.profiles.default.userSettings = {
         "workbench.colorTheme" = cfg.vscode-theme or ({}.${cfg.theme} or "Monokai Pro");
       };
       programs.gh-dash.settings.theme = {

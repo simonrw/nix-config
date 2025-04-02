@@ -11,6 +11,7 @@
       };
     };
 in {
+  enable = true;
   package = pkgs.nixVersions.latest;
   optimise.automatic = true;
   gc =

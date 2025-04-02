@@ -2,14 +2,13 @@
   description = "home-manager configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
     };
     darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-24.11";
+      url = "github:lnl7/nix-darwin";
     };
     jetbrains-updater = {
       url = "gitlab:genericnerdyusername/jetbrains-updater";
@@ -63,11 +62,6 @@
     mkOverlays = system: [
       (final: prev: {
         # programs from nixos-unstable
-        jujutsu = inputs.nixpkgs-unstable.legacyPackages.${system}.jujutsu;
-        fzf = inputs.nixpkgs-unstable.legacyPackages.${system}.fzf;
-        neovim = inputs.nixpkgs-unstable.legacyPackages.${system}.neovim;
-        mergiraf = inputs.nixpkgs-unstable.legacyPackages.${system}.mergiraf;
-
         testsearch = inputs.testsearch.packages.${system}.default;
         listprojects = inputs.listprojects.packages.${system}.default;
         keymapp = final.callPackage ./derivations/keymapp {pkgs = final;};

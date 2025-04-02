@@ -23,12 +23,7 @@
       fantasque-sans-mono
       noto-fonts
       iosevka
-      (nerdfonts.override {
-        fonts = [
-          "JetBrainsMono"
-          "SourceCodePro"
-        ];
-      })
+      nerd-fonts.jetbrains-mono
       fira-code
       inconsolata
       monaspace
@@ -41,14 +36,13 @@
 
   environment.variables.SHELL = "${pkgs.fish}/bin/fish";
 
-  services.nix-daemon.enable = true;
   documentation.enable = true;
 
   services.tailscale.enable = true;
 
   # enable touch id for sudo
   # https://nixcademy.com/2024/01/15/nix-on-macos/
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   programs.fish = {
     enable = true;

@@ -49,25 +49,6 @@ in {
   };
 
   config = let
-    nerdfont-name =
-      {
-        "JetBrains Mono" = "JetBrainsMono";
-        "Source Code Pro" = "SourceCodePro";
-        "Inconsolata" = "Inconsolata";
-      }
-      .${cfg.font-name}
-      or null;
-    # TODO: hard-code comic mono here
-    font-package =
-      if nerdfont-name != null
-      then (pkgs.nerdfonts.override {fonts = [nerdfont-name];})
-      else
-        {
-          "Monaspace" = pkgs.monaspace;
-          "Noto Sans Mono" = pkgs.noto-fonts;
-        }
-        .${cfg.font-name};
-
     alacritty-font-renamed =
       {
         "IBM Plex" = "IBM Plex Mono";
@@ -112,7 +93,7 @@ in {
     }";
   in {
     # vs code font
-    programs.vscode.userSettings."editor.fontFamily" = vscode-font;
+    programs.vscode.profiles.default.userSettings."editor.fontFamily" = vscode-font;
     programs.alacritty.settings.font = {
       normal.family = alacritty-font-renamed;
       normal.style = alacritty-font-style-renamed;
@@ -127,7 +108,7 @@ in {
 
     home.packages =
       [
-        font-package
+        pkgs.nerd-fonts.jetbrains-mono
       ]
       ++ cfg.fonts-to-install;
 

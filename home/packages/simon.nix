@@ -50,7 +50,6 @@ in {
       lua-language-server
       luaformatter
       mergiraf
-      mpv
       nil
       nix-output-monitor
       nix-tree
@@ -107,6 +106,7 @@ in {
       libreoffice
       man-pages
       man-pages-posix
+      mpv
       obsidian
       playerctl
       remmina
