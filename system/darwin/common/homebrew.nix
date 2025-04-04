@@ -64,6 +64,7 @@ in {
       "mise"
       "node"
       "pulumi/tap/pulumi"
+      "stow"
     ];
     taps = [
       "pulumi/tap"
