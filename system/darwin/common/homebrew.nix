@@ -20,7 +20,6 @@ in {
         "betterdisplay"
         "blender"
         "brave-browser"
-        "cursor"
         "deskpad"
         "discord"
         "docker"
