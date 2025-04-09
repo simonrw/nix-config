@@ -12,8 +12,8 @@ in {
     onActivation.cleanup = "uninstall";
     casks =
       [
-        "1password"
         "1password-cli"
+        "1password"
         "alacritty"
         "amazon-chime"
         "barrier"
@@ -29,6 +29,7 @@ in {
         "firefox"
         "ghostty"
         "gimp"
+        "google-chrome"
         "inkscape"
         "insomnia"
         "jetbrains-toolbox"
