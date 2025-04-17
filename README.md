@@ -1,7 +1,9 @@
 # Nix config
 
 > [!CAUTION]
-> I no longer use this repo to configure my systems. I may blog about it some day but TL;DR I don't need it as much on macOS and the constant rebuilding of my dotfiles was annoying me
+> I no longer use this repo to configure my systems. I may blog about it some day but TL;DR I don't need it as much on macOS and the constant rebuilding of my dotfiles was annoying me.
+>
+> My configuration is now at https://github.com/simonrw/dotfiles
 
 
 I manage my systems with [nix](https://nixos.org):
